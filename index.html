@@ -117,6 +117,7 @@
             <img src="https://github.com/sean-shiyuez/SACA/raw/main/Title.png" class="img-responsive center-block">
         </div>
     </div>
+        <br>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -126,7 +127,7 @@
                 </p>
             </div>
         </div>
-
+<br>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h3>Video</h3>
@@ -140,7 +141,7 @@
         </div>
     </div>
 </div>
-
+<br>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>Framework Overview</h3>
@@ -148,13 +149,33 @@
                     <!-- 请将以下URL替换为你的流程图URL，例如 Fig. 2 的图片 -->
                     <img src="https://github.com/sean-shiyuez/SACA/raw/main/Flow.png" class="img-responsive center-block">
                 </div>
+                <br>
                 <p class="text-justify">
                     <!-- 请在这里填写流程图的描述 -->
-                    The SACA framework integrates real-vehicle collision avoidance datasets, reachability-based scenario analysis, LLM-driven decision-making with risk assessment, and deployment with self-learning capabilities for continuous improvement.
+                    This study proposes SACA, an LLM-driven collision avoidance policy arbitration and decision-making framework (Fig. 2), built on real-vehicle scenarios and a pre-developed policy library [1, 21–23]. Aiming to minimize collision loss, SACA integrates legal, ethical, and emotional factors to select optimal strategies through scenario analysis, LLM reasoning, and real-time deployment. The chosen policy is executed by the control module, with outcomes evaluated offline and stored for continual self-learning.
                 </p>
+                <br>
+                <p class="text-justify">
+                    <!-- 请在这里填写流程图的描述 -->
+                    Table I lists candidate collision avoidance policies. Policies 3 and 4 involve coordinated braking and steering without inducing high-slip conditions, enabling lateral movement with quick directional recovery. SACA outputs target velocities for these policies. Policies 5 and 6 involve T-type drift maneuvers, deliberately inducing lateral sliding to rapidly reorient and decelerate the vehicle. These are beneficial in lateral collision scenarios (T-type collision), redirecting impacts to energy-absorbing zones to protect occupants and the battery pack.
+                </p>
+                <br>
+                <p class="text-justify">
+                    <!-- 请在这里填写流程图的描述 -->
+                    Within the LLM-driven decision-making module (Fig. 2c), vector-based scene matching is conducted to compare the current scenario with stored cases in the memory bank, allowing the retrieval of historically effective collision avoidance results to serve as incremental prompts for decision-making. Additionally, expert-annotated avoidance examples and key safety constraints are leveraged to fine-tune the LLM, enhancing its adaptability to collision scenarios. 
+                </p>
+                <br>
+                <p class="text-justify">
+                    <!-- 请在这里填写流程图的描述 -->
+                   To address real-time constraints during deployment, a precomputed strategy approach is designed, enabling the previewing of scenarios and retrieving or reasoning policies based on similarity and confidence levels, thereby improving the real-time performance of execution.                
+                </p>
+                <div class="text-center">
+                    <!-- 请将以下URL替换为你的流程图URL，例如 Fig. 2 的图片 -->
+                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/Table.png" class="img-responsive center-block">
+                </div>
             </div>
         </div>
-
+<br>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>Test Results</h3>
@@ -162,13 +183,17 @@
                     <!-- 请将以下URL替换为你的测试图URL，例如 Fig. 10 的图片 -->
                     <img src="https://github.com/sean-shiyuez/SACA/raw/main/Test.png" class="img-responsive center-block">
                 </div>
+                <br>
                 <p class="text-justify">
                     <!-- 请在这里填写测试图的描述 -->
                     Real-vehicle experimental validation of the T-type drift collision avoidance maneuver in the intersection scenario demonstrates SACA's ability to mitigate collision impact effectively while ensuring occupant and pedestrian safety.
                 </p>
+                <p class="text-justify">
+                    <!-- 请在这里填写测试图的描述 -->
+                    SACA uniquely integrates ethical and legal factors with collision avoidance expertise, achieving a 70.8%–93.4% reduction in collision loss and an 81.5%–100% reduction in false-trigger loss compared to baselines in tested scenarios, while maintaining real-time performance under optimal API response conditions.                </p>
             </div>
         </div>
-
+<br>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>Citation</h3>
@@ -184,7 +209,7 @@
                 </div>
             </div>
         </div>
-
+<br>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>Acknowledgements</h3>
