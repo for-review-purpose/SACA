@@ -1,224 +1,248 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>SACA: A Scenario-Aware Collision Avoidance Framework for Autonomous Vehicles Integrating LLMs-Driven Reasoning</title>
 
-    <meta name="description" content="Reliable collision avoidance under extreme situations remains a critical challenge for autonomous vehicles. This paper proposes a scenario-aware collision avoidance (SACA) framework that integrates predictive scenario evaluation, data-driven reasoning, and scenario-preview-based deployment to improve decision-making, leveraging large language models (LLMs) for socially responsible and context-aware solutions.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <!-- 请将以下URL替换为你的头图URL -->
-    <meta property="og:image" content="https://github.com/sean-shiyuez/SACA/raw/main/Title.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1296">
-    <meta property="og:image:height" content="840">
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://github.com/sean-shiyuez/SACA"/>
-    <meta property="og:title" content="SACA: A Scenario-Aware Collision Avoidance Framework for Autonomous Vehicles Integrating LLMs-Driven Reasoning" />
-    <meta property="og:description" content="Reliable collision avoidance under extreme situations remains a critical challenge for autonomous vehicles. This paper proposes a scenario-aware collision avoidance (SACA) framework that integrates predictive scenario evaluation, data-driven reasoning, and scenario-preview-based deployment to improve decision-making, leveraging large language models (LLMs) for socially responsible and context-aware solutions." />
+    <!-- Optional Font Awesome Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SACA: A Scenario-Aware Collision Avoidance Framework for Autonomous Vehicles Integrating LLMs-Driven Reasoning" />
-    <meta name="twitter:description" content="Reliable collision avoidance under extreme situations remains a critical challenge for autonomous vehicles. This paper proposes a scenario-aware collision avoidance (SACA) framework that integrates predictive scenario evaluation, data-driven reasoning, and scenario-preview-based deployment to improve decision-making, leveraging large language models (LLMs) for socially responsible and context-aware solutions." />
-    <!-- 请将以下URL替换为你的头图URL -->
-    <meta name="twitter:image" content="https://github.com/sean-shiyuez/SACA/Title.png" />
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/video_comparison.js"></script>
+    <style>
+        body {
+            font-size: 18px;
+            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-title h1 {
+            font-weight: bold;
+        }
+        .page-title small {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        .author-list {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .author-list li {
+            margin: 0 15px;
+        }
+        .nav-pills img {
+            max-height: 60px;
+        }
+        .nav-pills li a {
+            color: #333;
+        }
+        .nav-pills li a h4 {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .img-responsive {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .text-justify {
+            text-align: justify;
+        }
+        .video-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-bottom: 30px;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .framework-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #999;
+        }
+    </style>
 </head>
-
 <body>
     <div class="container" id="main">
-        <div class="row">
-            <h2 class="col-md-12 text-center">
-                <b>SACA</b>:  A Scenario-Aware Collision Avoidance Framework for Autonomous Vehicles Integrating LLMs-Driven Reasoning</br> 
-                <small>
-                    <!-- 请填写你的会议或期刊信息，例如 "ICCV 2023" -->
-                    IEEE RAL
-                </small>
-            </h2>
+        <!-- Title and Conference Info -->
+        <div class="page-title">
+            <h1>SACA: A Scenario-Aware Collision Avoidance Framework for Autonomous Vehicles Integrating LLMs-Driven Reasoning</h1>
+            <small>IEEE RAL</small>
         </div>
-<div class="row">
-    <div class="col-md-12 text-center">
-        <ul class="list-inline">
-            <!-- 作者信息 -->
-            <li>
-                <a href="https://sean-shiyuez.github.io/">Shiyue Zhao</a>
-                <br><small>Tsinghua University & University of Michigan</small>
-            </li>
-            <li>
-                <a href="https://sean-shiyuez.github.io/">Junzhi Zhang</a>
-                <br><small>Tsinghua University</small>
-            </li>
-            <li>
-                <a href="https://websites.umich.edu/~nmasoud/index.html">Neda Masoud</a>
-                <br><small>University of Michigan</small>
-            </li>
-            <li>
-                <a href="https://ccat.umtri.umich.edu/profile/huang/">Heye Huang</a>
-                <br><small>University of Wisconsin-Madison</small>
-            </li>
-            <li>
-                <a href="https://sean-shiyuez.github.io/SACA">Xingpeng Xia</a>
-                <br><small>University of Michigan</small>
-            </li>
-            <li>
-                <a href="https://www.svm.tsinghua.edu.cn/essay/74/1840.html">Chengkun He</a>
-                <br><small>Tsinghua University</small>
-            </li>
-        </ul>
-    </div>
-</div>
 
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
+        <!-- Authors -->
+        <div class="row author-list">
+            <div class="col-12">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="https://sean-shiyuez.github.io/">Shiyue Zhao</a>
+                        <br><small>Tsinghua University &amp; University of Michigan</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://sean-shiyuez.github.io/">Junzhi Zhang</a>
+                        <br><small>Tsinghua University</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://websites.umich.edu/~nmasoud/index.html">Neda Masoud</a>
+                        <br><small>University of Michigan</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://ccat.umtri.umich.edu/profile/huang/">Heye Huang</a>
+                        <br><small>University of Wisconsin-Madison</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://sean-shiyuez.github.io/SACA">Xingpeng Xia</a>
+                        <br><small>University of Michigan</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.svm.tsinghua.edu.cn/essay/74/1840.html">Chengkun He</a>
+                        <br><small>Tsinghua University</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation: Paper / Video / Code -->
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
                 <ul class="nav nav-pills nav-justified">
-                    <li>
-                        <!-- 请将以下URL替换为你的论文链接 -->
-                        <a href="https://paper">
-                            <image src="https://github.com/sean-shiyuez/SACA/raw/main/paper.png" height="60px">
-                            <h4><strong>Paper</strong></h4>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://paper">
+                            <img src="https://github.com/sean-shiyuez/SACA/raw/main/paper.png" alt="Paper icon">
+                            <h4>Paper</h4>
                         </a>
                     </li>
-                    <li>
-                        <!-- 请将以下URL替换为你的视频链接 -->
-                        <a href="https://你的视频链接">
-                            <image src="https://github.com/sean-shiyuez/SACA/raw/main/youtube_icon.png" height="60px">
-                            <h4><strong>Video</strong></h4>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://你的视频链接">
+                            <img src="https://github.com/sean-shiyuez/SACA/raw/main/youtube_icon.png" alt="Video icon">
+                            <h4>Video</h4>
                         </a>
                     </li>
-                    <li>
-                        <a href="https://github.com/sean-shiyuez/LLMs_Extreme_Collision_Avoidance">
-                            <image src="https://github.com/sean-shiyuez/SACA/raw/main/github.png" height="60px">
-                            <h4><strong>Code</strong></h4>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/sean-shiyuez/LLMs_Extreme_Collision_Avoidance">
+                            <img src="https://github.com/sean-shiyuez/SACA/raw/main/github.png" alt="GitHub icon">
+                            <h4>Code</h4>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
 
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-        <!-- 头图：请将以下URL替换为你的头图URL，例如 Fig. 1 -->
-            <img src="https://github.com/sean-shiyuez/SACA/raw/main/Title.png" class="img-responsive center-block">
+        <!-- Main Figure -->
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <img src="https://github.com/sean-shiyuez/SACA/raw/main/Title.png" class="img-responsive" alt="Title Figure">
+            </div>
         </div>
-    </div>
         <br>
 
+        <!-- Abstract -->
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>Abstract</h3>
+            <div class="col-md-8 offset-md-2">
+                <h3 class="section-title">Abstract</h3>
                 <p class="text-justify">
                     Reliable collision avoidance under extreme situations remains a critical challenge for autonomous vehicles. While large language models (LLMs) offer promising reasoning capabilities, their application in safety-critical evasive maneuvers is limited by latency and robustness issues. Even so, LLMs stand out for their ability to weigh emotional, legal, and ethical factors, to support socially responsible and context-aware collision avoidance decision-making. This paper proposes a scenario-aware collision avoidance (SACA) framework for extreme situations that integrates predictive scenario evaluation, data-driven reasoning, and scenario-preview-based deployment to improve collision avoidance decision-making. SACA consists of three key components. First, a predictive scenario analysis module utilizes obstacle reachability analysis and motion intention prediction to construct a comprehensive situational prompt. Second, an online reasoning module refines decision-making by leveraging prior collision avoidance knowledge and fine-tuning with scenario data. Third, an offline evaluation module assesses performance and stores scenarios in a memory bank. Additionally, a precomputed policy method improves deployability by previewing scenarios and retrieving or reasoning policies based on similarity and confidence levels. Real-vehicle tests show that, compared with baseline methods, SACA effectively reduces collision losses in extreme high-risk scenarios and lowers false triggering under complex conditions.
                 </p>
             </div>
         </div>
-<br>
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <h3>Video</h3>
-        <div class="text-center">
-            <div style="position:relative;padding-top:56.25%;">
-                <!-- 使用 video 标签替换 iframe -->
-                <video controls style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                    <source src="https://github.com/sean-shiyuez/SACA/raw/main/Videos.mp4" type="video/mp4">
-                </video>
+        <br>
+
+        <!-- Video -->
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3 class="section-title">Video</h3>
+                <div class="video-container">
+                    <video controls>
+                        <source src="https://github.com/sean-shiyuez/SACA/raw/main/Videos.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<br>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>Framework Overview</h3>
+        <br>
 
+        <!-- Framework Overview -->
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3 class="section-title">Framework Overview</h3>
                 <p class="text-justify">
-                    <!-- 请在这里填写流程图的描述 -->
                     This study proposes SACA, an LLM-driven collision avoidance policy arbitration and decision-making framework (Fig. 2), built on real-vehicle scenarios and a pre-developed policy library [1, 21–23]. Aiming to minimize collision loss, SACA integrates legal, ethical, and emotional factors to select optimal strategies through scenario analysis, LLM reasoning, and real-time deployment. The chosen policy is executed by the control module, with outcomes evaluated offline and stored for continual self-learning.
                 </p>
-                
-                <br>
                 <div class="text-center">
-                    <!-- 请将以下URL替换为你的流程图URL，例如 Fig. 2 的图片 -->
-                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/Flow.png" class="img-responsive center-block">
+                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/Flow.png" class="img-responsive" style="width:50%;" alt="Framework Flow">
                 </div>
-                <br>
-                <p class="text-justify">
-                    <!-- 请在这里填写流程图的描述 -->
+                <p class="text-justify mt-4">
                     Table I lists candidate collision avoidance policies. Policies 3 and 4 involve coordinated braking and steering without inducing high-slip conditions, enabling lateral movement with quick directional recovery. SACA outputs target velocities for these policies. Policies 5 and 6 involve T-type drift maneuvers, deliberately inducing lateral sliding to rapidly reorient and decelerate the vehicle. These are beneficial in lateral collision scenarios (T-type collision), redirecting impacts to energy-absorbing zones to protect occupants and the battery pack.
                 </p>
-                <br>
                 <p class="text-justify">
-                    <!-- 请在这里填写流程图的描述 -->
-                    Within the LLM-driven decision-making module (Fig. 2c), vector-based scene matching is conducted to compare the current scenario with stored cases in the memory bank, allowing the retrieval of historically effective collision avoidance results to serve as incremental prompts for decision-making. Additionally, expert-annotated avoidance examples and key safety constraints are leveraged to fine-tune the LLM, enhancing its adaptability to collision scenarios. 
+                    Within the LLM-driven decision-making module (Fig. 2c), vector-based scene matching is conducted to compare the current scenario with stored cases in the memory bank, allowing the retrieval of historically effective collision avoidance results to serve as incremental prompts for decision-making. Additionally, expert-annotated avoidance examples and key safety constraints are leveraged to fine-tune the LLM, enhancing its adaptability to collision scenarios.
                 </p>
-                <br>
                 <p class="text-justify">
-                    <!-- 请在这里填写流程图的描述 -->
-                   To address real-time constraints during deployment, a precomputed strategy approach is designed, enabling the previewing of scenarios and retrieving or reasoning policies based on similarity and confidence levels, thereby improving the real-time performance of execution.                
+                   To address real-time constraints during deployment, a precomputed strategy approach is designed, enabling the previewing of scenarios and retrieving or reasoning policies based on similarity and confidence levels, thereby improving the real-time performance of execution.
                 </p>
                 <div class="text-center">
-                <img src="https://github.com/sean-shiyuez/SACA/raw/main/Table.png"
-                     class="img-responsive center-block"
-                     style="transform: scale(0.5); transform-origin: center;">
+                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/Table.png" class="img-responsive" style="transform: scale(0.5); transform-origin: center;" alt="Table of Policies">
                 </div>
-                <br>
-
             </div>
         </div>
-<br>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>Test Results</h3>
+        <br>
 
+        <!-- Test Results -->
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3 class="section-title">Test Results</h3>
                 <p class="text-justify">
-                    <!-- 请在这里填写测试图的描述 -->
                     Real-vehicle experimental validation of the T-type drift collision avoidance maneuver in the intersection scenario demonstrates SACA's ability to mitigate collision impact effectively while ensuring occupant and pedestrian safety.
                 </p>
-
-                <br>
                 <p class="text-justify">
-                    <!-- 请在这里填写测试图的描述 -->
-                    SACA uniquely integrates ethical and legal factors with collision avoidance expertise, achieving a 70.8%–93.4% reduction in collision loss and an 81.5%–100% reduction in false-trigger loss compared to baselines in tested scenarios, while maintaining real-time performance under optimal API response conditions.                
+                    SACA uniquely integrates ethical and legal factors with collision avoidance expertise, achieving a 70.8%–93.4% reduction in collision loss and an 81.5%–100% reduction in false-trigger loss compared to baselines in tested scenarios, while maintaining real-time performance under optimal API response conditions.
                 </p>
-                <br>
                 <p class="text-justify">
-                    <!-- 请在这里填写测试图的描述 -->
                     The collision avoidance diagram for extreme scenarios at intersections and the reasoning diagram for conventional scenarios are shown below.
                 </p>
-                <br>
                 <div class="text-center">
-                    <!-- 请将以下URL替换为你的测试图URL，例如 Fig. 10 的图片 -->
-                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/Test.png" class="img-responsive center-block">
+                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/Test.png" class="img-responsive" alt="Test Figure">
                 </div>
-                <br>
                 <div class="text-center">
-                    <!-- 请将以下URL替换为你的测试图URL，例如 Fig. 10 的图片 -->
-                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/reason.png" class="img-responsive center-block">
+                    <img src="https://github.com/sean-shiyuez/SACA/raw/main/reason.png" class="img-responsive" alt="Reasoning Figure">
                 </div>
-                            
             </div>
         </div>
-<br>
+        <br>
+
+        <!-- Citation -->
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>Citation</h3>
-                <div class="form-group col-md-10 col-md-offset-1">
-                    <textarea id="bibtex" class="form-control" readonly>
+            <div class="col-md-8 offset-md-2">
+                <h3 class="section-title">Citation</h3>
+                <div class="form-group">
+                    <textarea class="form-control" rows="6" readonly>
 @article{zhao2024saca,
     title={SACA: A Scenario-Aware Collision Avoidance Framework for Autonomous Vehicles Integrating LLMs-Driven Reasoning},
     author={Shiyue Zhao and Junzhi Zhang and Neda Masoud and Heye Huang and Xingpeng Xia and Chengkun He},
@@ -229,16 +253,27 @@
                 </div>
             </div>
         </div>
-<br>
+        <br>
+
+        <!-- Acknowledgements -->
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>Acknowledgements</h3>
+            <div class="col-md-8 offset-md-2">
+                <h3 class="section-title">Acknowledgements</h3>
                 <p class="text-justify">
-                    <!-- 请填写你的致谢信息 -->
-                    We thank our colleagues and institutions for their support in data collection, real-vehicle testing, and valuable feedback throughout this research. 
+                    We thank our colleagues and institutions for their support in data collection, real-vehicle testing, and valuable feedback throughout this research.
                 </p>
             </div>
         </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2024 SafeDrive Project. All rights reserved.
+        </div>
     </div>
+
+    <!-- Scripts (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
